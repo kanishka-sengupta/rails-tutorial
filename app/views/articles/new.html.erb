@@ -2,6 +2,14 @@
     New Article
 </h1>
 
+<% if @article.errors.any? %>
+    <h2>The following errors prvented Article from being Saved</h2>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>    
+<% end %>
 <%= form_with scope: :article, url: articles_path, local: true do |f| %>
     <p>
         <%= f.label :title %>
